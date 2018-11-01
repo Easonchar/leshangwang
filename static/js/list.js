@@ -50,7 +50,7 @@ $(function(){
 	
 	
 	//先获取轮播图的数据
-	$.get("../json/lunbo.json", function(data){
+	$.get("/json/lunbo.json", function(data){
 //		console.log(data); 
 		
 		var arr = data;
@@ -173,7 +173,7 @@ $(function(){
 		//遍历数组中的数据
 		for (var i=0;i<arr.length;i++) {
 			var obj = arr[i];
-//			var li = "<li><div><img src='../"+obj.img2+"' /></div><p>"+obj.name+"</p><p>耐克</p><span><i>￥</i>"+obj.price+"</span></li>"
+			var li = "<li><div><img src='../"+obj.img2+"' /></div><p>"+obj.name+"</p><p>耐克</p><span><i>￥</i>"+obj.price+"</span></li>"
 				var li= `<li>
 							<div>
 								<img src='../${obj.img2}' >

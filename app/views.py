@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 
 
 # Create your views here.
-from app.models import User
+from app.models import User, goods
 
 
 def index(request):
@@ -52,7 +52,13 @@ def detail(request):
 
 
 def list(request):
-    return render(request,'html/list.html')
+    wheels = goods.objects.all()
+
+    data = {
+        'wheels':'wheels',
+    }
+
+    return render(request,'html/list.html',context=data)
 
 
 def login(request):
