@@ -11,14 +11,25 @@
 		
 	</head>
 	<body>
-        <p> username : {{ username }} </p>
+
 		<!--top-->
 		<div id="top">
 			<ul id="list1">
+{#                {% if username %}#}
+{#                    {% else %}#}
 				<li style="margin-left: 20px;">
-					欢迎来到尚品网,<a href="{% url 'leshangwang:login' %}">登陆</a>&nbsp;|
+                    {% if username %}
+                     用户：{{ username }} 欢迎来到尚品网,<a href="{% url 'leshangwang:index' %}">退出</a>&nbsp;|
+                    {% else %}
+                        欢迎来到尚品网,<a href="{% url 'leshangwang:login' %}">登陆</a>&nbsp;|
+                    {% endif %}
+
 				</li>
+
 				<li><a href="{% url 'leshangwang:register' %}">注册</a></li>
+
+{#                {% endif %}#}
+
 				<li>
 					<i class="iconfont">&#xe600;</i>
 					购物袋(0)
