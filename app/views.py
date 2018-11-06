@@ -178,3 +178,5 @@ def logout(request):
     return response
 
 
+def mine(request):
+    return render(request,'html/mine.html')

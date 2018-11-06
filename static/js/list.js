@@ -49,120 +49,180 @@ $(function(){
 	})
 	
 	
-	//先获取轮播图的数据
-	$.get("/json/lunbo.json", function(data){
-//		console.log(data); 
-		
-		var arr = data;
-		for (var i=0;i<arr.length;i++) {
-			var obj = arr[i];
-			$("<li><img src=../"+obj.img+" /></li>").appendTo($("#list2_2"));
-			if(i==0){
-				$("#list2 li").eq(0).addClass("active");
-			}
-		}
-		lunbo();
-		
-	})
+// //先获取轮播图的数据
+// 	$.get("../json/lunbo.json", function(data){
+// //		console.log(data);
+//
+// 		var arr = data;
+// 		for (var i=0;i<arr.length;i++) {
+// 			var obj = arr[i];
+// 			$("<li><img src=../"+obj.img+" /></li>").appendTo($("#list2_2"));
+// 			if(i==0){
+// 				$("#list2 li").eq(0).addClass("active");
+// 			}
+// 		}
+// 		lunbo();
+//
+// 	})
+//
+// 	//jq轮播图
+//
+// 	function lunbo() {
+// 		//复制第一张图到最后
+// 		$("#list2_2 li").first().clone(true).appendTo($("#list2_2"));
+// 		var size = $("#list2_2 li").size();
+// 		$("#list2_2").width(960*size);
+// 		//定时器开启
+//
+// 		var i = 0;
+// 		var timer = setInterval(function(){
+// 			i++;
+// 			move();
+// 		},2000)
+//
+// 		function move() {
+// 			//需要判断一下边界
+// 			if (i < 0) {
+// 				$("#list2_2").css("left", -960*(size-1));
+// 				i = size-2;
+// 			}
+// 			if(i>=size){
+// 				$("#list2_2").css({"left":0})
+// 				i=1;
+// 			}
+// 			$("#list2_2").stop().animate({"left":-960*i},500);
+// 			//上面的字跟着动
+// 			if(i==size-1){
+// 				$("#list2 li").eq(0).addClass("active").siblings().removeClass("active");
+// 			}
+// 			$("#list2 li").eq(i).addClass("active").siblings().removeClass("active");
+// 		}
+// 		//点击对应的导航显示内容
+//
+// 		$("#list2 li").mouseenter(function(){
+// 			clearInterval(timer);
+// 			var index = $(this).index();
+// 			$("#list2_2").css({"left":-960*index});
+// 			$("#list2 li").eq(index).addClass("active").siblings().removeClass("active");
+//
+// 		})
+//
+//
+// 		$("#list2 li").mouseleave(function(){
+// 			i = $(this).index();
+// 			timer = setInterval(function(){
+// 				i++;
+// 				move();
+// 			},2000)
+// 		})
+//
+//
+// //		鼠标移入list停止轮播
+// 		$("#list2_2").on({
+// 			mouseenter:function(){
+// 				clearInterval(timer);
+// 			},
+// 			mouseleave:function(){
+// 				timer = setInterval(function(){
+// 					i++;
+// 					move();
+// 				},2000)
+// 			}
+// 		})
+// 		//上一页下一页
+// 		$("#next").on({
+// 			click:function(){
+// 				i++;
+// 				move();
+// 			},
+// 			mouseenter:function(){
+// 				clearInterval(timer);
+// 			},
+// 			mouseleave:function(){
+// 				timer = setInterval(function(){
+// 					i++;
+// 					move();
+// 				},2000)
+// 			}
+// 		})
+//
+// 		$("#pre").on({
+// 			click:function(){
+// 				i--;
+// 				move();
+// 			},
+// 			mouseenter:function(){
+// 				clearInterval(timer);
+// 			},
+// 			mouseleave:function(){
+// 				timer = setInterval(function(){
+// 					i++;
+// 					move();
+// 				},2000)
+// 			}
+// 		})
+// 	}
 
-	//jq轮播图
-	
-	function lunbo() {
-		//复制第一张图到最后
-		$("#list2_2 li").first().clone(true).appendTo($("#list2_2"));
-		var size = $("#list2_2 li").size();
-		$("#list2_2").width(960*size);
-		//定时器开启
-		
-		var i = 0;
-		var timer = setInterval(function(){
-			i++;
-			move();
-		},2000)
-		
-		function move() {
-			//需要判断一下边界
-			if (i < 0) {
-				$("#list2_2").css("left", -960*(size-1));
-				i = size-2;
-			}
-			if(i>=size){
-				$("#list2_2").css({"left":0})
-				i=1;
-			}
-			$("#list2_2").stop().animate({"left":-960*i},500);
-			//上面的字跟着动
-			if(i==size-1){
-				$("#list2 li").eq(0).addClass("active").siblings().removeClass("active");
-			}
-			$("#list2 li").eq(i).addClass("active").siblings().removeClass("active");
-		}
-		//点击对应的导航显示内容
-	
-		$("#list2 li").mouseenter(function(){
-			clearInterval(timer);
-			var index = $(this).index();
-			$("#list2_2").css({"left":-960*index});
-			$("#list2 li").eq(index).addClass("active").siblings().removeClass("active");
-			
-		})
-		
-		
-		$("#list2 li").mouseleave(function(){
-			i = $(this).index();
-			timer = setInterval(function(){
-				i++;
-				move();
-			},2000)
-		})
-		
-		
-//		鼠标移入list停止轮播
-		$("#list2_2").on({
-			mouseenter:function(){
-				clearInterval(timer);
-			},
-			mouseleave:function(){
-				timer = setInterval(function(){
-					i++;
-					move();
-				},2000)
-			}
-		})
-		//上一页下一页
-		$("#next").on({
-			click:function(){
-				i++;
-				move();
-			},
-			mouseenter:function(){
-				clearInterval(timer);
-			},
-			mouseleave:function(){
-				timer = setInterval(function(){
-					i++;
-					move();
-				},2000)
-			}
-		})
-		
-		$("#pre").on({
-			click:function(){
-				i--;
-				move();
-			},
-			mouseenter:function(){
-				clearInterval(timer);
-			},
-			mouseleave:function(){
-				timer = setInterval(function(){
-					i++;
-					move();
-				},2000)
-			}
-		})
-	}
-	
+		// //		轮播图
+		// var i = 0;
+		// var timer = null;
+		// $(".next").click(function(){
+		// 	i++;
+		// 	if(i>$("#list2_2>li").size()-1){
+		// 		i=0;
+		// 	}
+		// 	$("#list2_2").stop().animate({"left":-960*i},500);
+		// });
+		//
+		// $(".pre").click(function(){
+		// 	i--;
+		// 	if(i<0){
+		// 		i = $("#list2_2>li").size()-1;
+		// 	}
+		// 	$("#list2_2").stop().animate({"left":-960*i},500);
+		// });
+		// timer = setInterval(function(){
+		// 	i++;
+		// 	if(i>$("#list2_2>li").size()-1){
+		// 		i=0;
+		//
+		// 	}
+		// 	$("#list2_2").stop().animate({"left":-960*i},500);
+		// },2000);
+		// //鼠标移入
+		// $("#list2_2,#btn span").mouseenter(function(){
+		// 	clearInterval(timer);
+		// });
+		//
+		//
+		// $("#list2_2,#btn span").mouseleave(function(){
+		// 	clearInterval(timer);
+		// 	timer = setInterval(function(){
+		// 		i++;
+		// 		if(i>$("#list2_2>li").size()-1){
+		// 			i=0;
+		// 		}
+		// 		$("#list2_2").stop().animate({"left":-960*i},500);
+		// 	},2000);
+		// })
+
+
+    //    swiper
+         new Swiper('.swiper-container', {
+
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            speed: 2000,
+            loop: true,
+            observer:true,
+            observeParents:true,
+            autoplayDisableOnInteraction : false,
+            autoplay:1500
+             });
+
+
 	
 	//加载商品列表页的数据
 	

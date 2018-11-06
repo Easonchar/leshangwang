@@ -5,21 +5,25 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="{% static 'css/reset .css' %}" />
+        <link rel="stylesheet" href="{% static 'css/list.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/swiper-3.4.2.min.css' %}">
 		<script type="text/javascript" src="{% static 'js/jquery-1.12.3.js' %}" ></script>
+        <script type="text/javascript" src="{% static 'js/swiper-3.4.2.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'js/list.js' %}" ></script>
-		<link rel="stylesheet" href="{% static 'css/list.css' %}" />
+
+
 	</head>
 	<body>
 		<!--top-->
 		<div id="top">
 			<ul id="list1">
 				<li style="margin-left: 20px;">
-					欢迎来到尚品网,<a href="login.html">登陆</a>&nbsp;|
+					欢迎来到尚品网,<a href="{% url 'leshangwang:login' %}">登陆</a>&nbsp;|
 				</li>
-				<li><a href="register.html">注册</a></li>
+				<li><a href="{% url 'leshangwang:register' %}">注册</a></li>
 				<li>
 					<i class="iconfont">&#xe600;</i>
-					购物袋(0)
+					<a href="{% url 'leshangwang:shoppingCar' %}">购物袋(0)</a>
 					<i class=" iconfont" style="font-size: 12px;">&#xe6a3;</i>
 				</li>
 			</ul>
@@ -79,23 +83,49 @@
 				<li>TOPSHOP</li>
 				<li style="text-align: right;">SALE</li>
 			</ul>
+
+
 			
-			
-			<ul id="list2_2">
-				<li><div><img src="{% static 'img/listImg/list1_big1.jpg' %}"></div></li>
-				<li><div><img src="{% static 'img/listImg/list1_big2.jpg' %}"></div></li>
-				<li><div><img src="{% static 'img/listImg/list1_big3.jpg'%}" ></div></li>
-				<li><div><img src="{% static 'img/listImg/list1_big4.jpg'%}" ></div></li>
+{#			<ul id="list2_2">#}
 {#				<li></li>#}
 {#				<li></li>#}
 {#				<li></li>#}
 {#				<li></li>#}
-			</ul>
-			<div id="btn">
-				<span class="next" id="next"><img src="{% static 'img/indexImg/right.png' %}"/></span>
-				<span class="pre" id="pre"><img src="{% static 'img/indexImg/left.png' %}"/></span>
-			</div>
-		</div>
+{#				<li></li>#}
+{#				<li></li>#}
+{#				<li></li>#}
+{#				<li></li>#}
+{#			</ul>#}
+{#			<div id="btn">#}
+{#				<span class="next" id="next"><img src="{% static 'img/indexImg/right.png' %}"/></span>#}
+{#				<span class="pre" id="pre"><img src="{% static 'img/indexImg/left.png' %}"/></span>#}
+{#			</div>#}
+        <!-- Swiper -->
+    <div class="swiper-container" id="topSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="{% static 'img/navImg/1.png' %}"></div>
+            <div class="swiper-slide"><img src="{% static 'img/navImg/2.png' %}"></div>
+            <div class="swiper-slide"><img src="{% static 'img/navImg/3.png' %}"></div>
+            <div class="swiper-slide"><img src="{% static 'img/navImg/4.png' %}"></div>
+            <div class="swiper-slide"><img src="{% static 'img/navImg/5.png' %}"></div>
+            <div class="swiper-slide"><img src="{% static 'img/navImg/6.png' %}"></div>
+            <div class="swiper-slide"><img src="{% static 'img/navImg/7.png' %}"></div>
+            <div class="swiper-slide"><img src="{% static 'img/navImg/8.png' %}"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+
+        </div>
+
+
+
+
+
 		<div id="shoes">
 			<h2>高跟鞋</h2>
 			<ul id="shoes_list">
