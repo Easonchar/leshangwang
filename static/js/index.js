@@ -113,6 +113,6 @@ $(function(){
 		//点击鞋子 进入详情页
 		
 		$("#main_list1>li").eq(0).click(function(){
-			location.href = "/list";
+			location.href = "/list/";
 		})
 })

@@ -7,38 +7,38 @@
 		<script type="text/javascript" src="{% static 'js/jquery-1.12.3.js' %}" ></script>
 		<script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}" ></script>
 		<link rel="stylesheet" href="{% static 'css/login.css' %}" />
-		<script>
-			$(function(){
-				var name = $.cookie("user");
-				var pwd = $.cookie("psd");
-				$(".p2 input").val(name);
-				$(".p3 input").val(pwd);
-				
-
-				console.log(name);
-				console.log(pwd);
-				$(".p5 input").click(function(){
-					var userName = $(".p2 input").val();
-					var passWord =  $(".p3 input").val();
-					$.post("http://localhost/leshangwang/json/login.php",{username:userName,password:passWord},function(data){
-//						console.log(data);
-						var obj = JSON.parse(data);
-						$(this).css({background:"blue"});
-						if(obj.status ==1){
-							alert(obj.msg);
-							location.href = "/index/";
-							if($(".p4 input").prop("checked")==true){
-								$.cookie("user", userName, {expires:30, path:"/"});
-								$.cookie("psd", passWord, {expires:30, path:"/"});				
-							}	
-						}else if(status ==0){
-							alert(obj.msg);
-						}
-						
-					})
-				});
-			})
-		</script>
+{#		<script>#}
+{#			$(function(){#}
+{#				var name = $.cookie("user");#}
+{#				var pwd = $.cookie("psd");#}
+{#				$(".p2 input").val(name);#}
+{#				$(".p3 input").val(pwd);#}
+{#				#}
+{##}
+{#				console.log(name);#}
+{#				console.log(pwd);#}
+{#				$(".p5 input").click(function(){#}
+{#					var userName = $(".p2 input").val();#}
+{#					var passWord =  $(".p3 input").val();#}
+{#					$.post("http://localhost/leshangwang/json/login.php",{username:userName,password:passWord},function(data){#}
+{#//						console.log(data);#}
+{#						var obj = JSON.parse(data);#}
+{#						$(this).css({background:"blue"});#}
+{#						if(obj.status ==1){#}
+{#							alert(obj.msg);#}
+{#							location.href = "/index/";#}
+{#							if($(".p4 input").prop("checked")==true){#}
+{#								$.cookie("user", userName, {expires:30, path:"/"});#}
+{#								$.cookie("psd", passWord, {expires:30, path:"/"});				#}
+{#							}	#}
+{#						}else if(status ==0){#}
+{#							alert(obj.msg);#}
+{#						}#}
+{#						#}
+{#					})#}
+{#				});#}
+{#			})#}
+{#		</script>#}
 	</head>
 	<body>
 		<div id="logo">
@@ -51,7 +51,7 @@
 				依据《网络安全法》，为保障您的账户安全和正常使用，请尽快完成手机号验证！ 将更有利于保护您的个人隐私。
 			</div>
 		</div>
-		<form id="login" action="/login/" method="post">
+		<form id="login" action="{% url 'leshangwang:login' %}" method="post">
             {% csrf_token %}
 			<h2>账户登陆</h2>
 			<div id="login_left">
@@ -67,7 +67,7 @@
 			<div id="login_right">
 				<div id="login_right_top">
 					<p>没有尚品网账号？</p>
-					<a href="/register/">注册新会员</a>
+					<a href="{% url 'leshangwang:register' %}">注册新会员</a>
 					<img src="{% static 'img/loginImg/arrow.jpg' %}" />
 				</div>
 				<div id="login_right_buttom">

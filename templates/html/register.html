@@ -5,14 +5,15 @@
 		<meta charset="UTF-8">
 		<title>login</title>
 		<script type="text/javascript" src="{% static 'js/ajax.js' %}" ></script>
+        <link rel="stylesheet" href="{% static 'css/register.css' %}" />
 		<script type="text/javascript" src="{% static 'js/register.js' %}" ></script>
-		<link rel="stylesheet" href="{% static 'css/register.css' %}" />
+
 	</head>
 	<body>
 		<div id="logo">
 			<img src="{% static 'img/loginImg/logo_v100.png' %}" />
 		</div>
-		<form id="form_login" action="/register/" method="post">
+		<form id="form_login" action="{% url 'leshangwang:register' %}" method="post">
             {% csrf_token %}
 			<div class="tip">新用户注册即可领取500元专享礼包</div>
 			

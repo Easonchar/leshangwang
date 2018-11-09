@@ -15,11 +15,10 @@
 		<!--top-->
 		<div id="top">
 			<ul id="list1">
-{#                {% if username %}#}
-{#                    {% else %}#}
+
 				<li style="margin-left: 20px;">
                     {% if username %}
-                     用户：{{ username }} 欢迎来到尚品网,<a href="{% url 'leshangwang:index' %}">退出</a>&nbsp;|
+                    <b> 用户：{{ username }} </b>欢迎来到尚品网,<a href="{% url 'leshangwang:index' %}">退出</a>&nbsp;|
                     {% else %}
                         欢迎来到尚品网,<a href="{% url 'leshangwang:login' %}">登陆</a>&nbsp;|
                     {% endif %}
@@ -32,7 +31,7 @@
 
 				<li>
 					<i class="iconfont">&#xe600;</i>
-                    <a href="{% url 'leshangwang:shoppingCar' %}">
+                    <a href="#">
                         购物袋(0)
                     </a>
 

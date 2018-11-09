@@ -47,169 +47,9 @@ $(function(){
 	$("#sidebar_list li").eq(3).mouseleave(function(){
 		$($(this)).html("<a href='#'><img src='../img/sidebarImg/3.png' /></a>");
 	})
-	
-	
-// //先获取轮播图的数据
-// 	$.get("../json/lunbo.json", function(data){
-// //		console.log(data);
-//
-// 		var arr = data;
-// 		for (var i=0;i<arr.length;i++) {
-// 			var obj = arr[i];
-// 			$("<li><img src=../"+obj.img+" /></li>").appendTo($("#list2_2"));
-// 			if(i==0){
-// 				$("#list2 li").eq(0).addClass("active");
-// 			}
-// 		}
-// 		lunbo();
-//
-// 	})
-//
-// 	//jq轮播图
-//
-// 	function lunbo() {
-// 		//复制第一张图到最后
-// 		$("#list2_2 li").first().clone(true).appendTo($("#list2_2"));
-// 		var size = $("#list2_2 li").size();
-// 		$("#list2_2").width(960*size);
-// 		//定时器开启
-//
-// 		var i = 0;
-// 		var timer = setInterval(function(){
-// 			i++;
-// 			move();
-// 		},2000)
-//
-// 		function move() {
-// 			//需要判断一下边界
-// 			if (i < 0) {
-// 				$("#list2_2").css("left", -960*(size-1));
-// 				i = size-2;
-// 			}
-// 			if(i>=size){
-// 				$("#list2_2").css({"left":0})
-// 				i=1;
-// 			}
-// 			$("#list2_2").stop().animate({"left":-960*i},500);
-// 			//上面的字跟着动
-// 			if(i==size-1){
-// 				$("#list2 li").eq(0).addClass("active").siblings().removeClass("active");
-// 			}
-// 			$("#list2 li").eq(i).addClass("active").siblings().removeClass("active");
-// 		}
-// 		//点击对应的导航显示内容
-//
-// 		$("#list2 li").mouseenter(function(){
-// 			clearInterval(timer);
-// 			var index = $(this).index();
-// 			$("#list2_2").css({"left":-960*index});
-// 			$("#list2 li").eq(index).addClass("active").siblings().removeClass("active");
-//
-// 		})
-//
-//
-// 		$("#list2 li").mouseleave(function(){
-// 			i = $(this).index();
-// 			timer = setInterval(function(){
-// 				i++;
-// 				move();
-// 			},2000)
-// 		})
-//
-//
-// //		鼠标移入list停止轮播
-// 		$("#list2_2").on({
-// 			mouseenter:function(){
-// 				clearInterval(timer);
-// 			},
-// 			mouseleave:function(){
-// 				timer = setInterval(function(){
-// 					i++;
-// 					move();
-// 				},2000)
-// 			}
-// 		})
-// 		//上一页下一页
-// 		$("#next").on({
-// 			click:function(){
-// 				i++;
-// 				move();
-// 			},
-// 			mouseenter:function(){
-// 				clearInterval(timer);
-// 			},
-// 			mouseleave:function(){
-// 				timer = setInterval(function(){
-// 					i++;
-// 					move();
-// 				},2000)
-// 			}
-// 		})
-//
-// 		$("#pre").on({
-// 			click:function(){
-// 				i--;
-// 				move();
-// 			},
-// 			mouseenter:function(){
-// 				clearInterval(timer);
-// 			},
-// 			mouseleave:function(){
-// 				timer = setInterval(function(){
-// 					i++;
-// 					move();
-// 				},2000)
-// 			}
-// 		})
-// 	}
-
-		// //		轮播图
-		// var i = 0;
-		// var timer = null;
-		// $(".next").click(function(){
-		// 	i++;
-		// 	if(i>$("#list2_2>li").size()-1){
-		// 		i=0;
-		// 	}
-		// 	$("#list2_2").stop().animate({"left":-960*i},500);
-		// });
-		//
-		// $(".pre").click(function(){
-		// 	i--;
-		// 	if(i<0){
-		// 		i = $("#list2_2>li").size()-1;
-		// 	}
-		// 	$("#list2_2").stop().animate({"left":-960*i},500);
-		// });
-		// timer = setInterval(function(){
-		// 	i++;
-		// 	if(i>$("#list2_2>li").size()-1){
-		// 		i=0;
-		//
-		// 	}
-		// 	$("#list2_2").stop().animate({"left":-960*i},500);
-		// },2000);
-		// //鼠标移入
-		// $("#list2_2,#btn span").mouseenter(function(){
-		// 	clearInterval(timer);
-		// });
-		//
-		//
-		// $("#list2_2,#btn span").mouseleave(function(){
-		// 	clearInterval(timer);
-		// 	timer = setInterval(function(){
-		// 		i++;
-		// 		if(i>$("#list2_2>li").size()-1){
-		// 			i=0;
-		// 		}
-		// 		$("#list2_2").stop().animate({"left":-960*i},500);
-		// 	},2000);
-		// })
-
 
     //    swiper
-         new Swiper('.swiper-container', {
-
+   new Swiper('.swiper-container', {
             pagination: '.swiper-pagination',
             paginationClickable: true,
             nextButton: '.swiper-button-next',
@@ -220,10 +60,8 @@ $(function(){
             observeParents:true,
             autoplayDisableOnInteraction : false,
             autoplay:1500
-             });
+    });
 
-
-	
 	//加载商品列表页的数据
 	
 	//ajax请求数据  动态加载到页面的指定位置
@@ -233,7 +71,7 @@ $(function(){
 		//遍历数组中的数据
 		for (var i=0;i<arr.length;i++) {
 			var obj = arr[i];
-			var li = "<li><div><img src='../"+obj.img2+"' /></div><p>"+obj.name+"</p><p>耐克</p><span><i>￥</i>"+obj.price+"</span></li>"
+//			var li = "<li><div><img src='../"+obj.img2+"' /></div><p>"+obj.name+"</p><p>耐克</p><span><i>￥</i>"+obj.price+"</span></li>"
 				var li= `<li>
 							<div>
 								<img src='../${obj.img2}' >
@@ -242,15 +80,15 @@ $(function(){
 							<p>耐克</p>
 							<span><i>￥</i>${obj.price}</span>
 						</li>`
-				
+
 				//Es6模版字符串非常的好用
 			$(li).appendTo($("#shoes_list"));
-			
+
 		}
-		
+
 		//点击尚品进入详情页
 		$("#shoes_list").on("click","li",function(){
-			var index = $(this).index(); 
+			var index = $(this).index();
 			var obj = arr[index];
 			//进入详情页， 且将当前点击的商品的id传入
 			location.href = "detail.html?id=" + obj.id;
@@ -258,16 +96,16 @@ $(function(){
 		});
 		//鼠标移入列表页时改变图片对应的src
 		$("#shoes_list").on("mouseenter","img",function(){
-			var index = $(this).index("#shoes_list img"); 
+			var index = $(this).index("#shoes_list img");
 			var obj = arr[index];
 			$(this).attr("src","../"+obj.img1);//这里src的路径是一样的
 		});
 		$("#shoes_list").on("mouseleave","img",function(){
-			var index = $(this).index("#shoes_list img"); 
+			var index = $(this).index("#shoes_list img");
 			var obj = arr[index];
 			$(this).attr("src","../"+obj.img2);
 		});
-		
+
 	});
 	
 })
