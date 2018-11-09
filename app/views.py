@@ -3,7 +3,7 @@ import random
 import time
 import uuid
 
-from django.http import HttpResponse, response
+from django.http import HttpResponse, response, JsonResponse
 from django.shortcuts import render, redirect
 
 
@@ -103,3 +103,42 @@ def logout(request):
 
 def mine(request):
     return render(request,'html/mine.html')
+
+
+def jsonstatus(request):
+
+    id = request.GET.get('id')
+    name = request.GET.get("name")
+    price = request.GET.get('price')
+    brand = request.GET.get('brand')
+    unit = request.GET.get('unit')
+    img1 = request.GET.get('img1')
+    img2 = request.GET.get('img2')
+    img3 = request.GET.get('img3')
+    img4 = request.GET.get('img4')
+    img5 = request.GET.get('img5')
+    img6 = request.GET.get('img6')
+    img7 = request.GET.get('img7')
+    img8 = request.GET.get('img8')
+    img9 = request.GET.get('img9')
+    img10 = request.GET.get('img10')
+    goods.save()
+    responseData = {
+        'id':id,
+        'name':name,
+        'price':price,
+        'brand':brand,
+        'unit':unit,
+        'img1':img1,
+        'img2': img2,
+        'img3': img3,
+        'img4': img4,
+        'img5': img5,
+        'img6': img6,
+        'img7': img7,
+        'img8': img8,
+        'img9': img9,
+        'img10': img10,
+    }
+
+    return JsonResponse(responseData)

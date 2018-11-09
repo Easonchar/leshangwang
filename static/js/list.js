@@ -66,7 +66,7 @@ $(function(){
 	
 	//ajax请求数据  动态加载到页面的指定位置
 	$.get("../json/list.json",function(data){
-//		console.log(data);
+		console.log(data);
 		var arr = data;
 		//遍历数组中的数据
 		for (var i=0;i<arr.length;i++) {
@@ -107,5 +107,21 @@ $(function(){
 		});
 
 	});
-	
+
+
+		//点击尚品进入详情页
+		$("#shoes_list").on("click","li",function(){
+			var index = $(this).index();
+			var obj = arr[index];
+			//进入详情页， 且将当前点击的商品的id传入
+			location.href = "detail.html?id=" + obj.id;
+			console.log("aaaa")
+		});
+		//鼠标移入列表页时改变图片对应的src
+		$("#shoes_list").on("mouseenter","img",function(){
+			var index = $(this).index("#shoes_list img");
+			var obj = arr[index];
+			$(this).attr("src","../"+obj.img1);//这里src的路径是一样的
+		});
+
 })
