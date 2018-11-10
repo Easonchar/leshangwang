@@ -7,13 +7,55 @@
 		<script type="text/javascript" src="{% static 'js/jquery-1.12.3.js' %}" ></script>
 		<script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}" ></script>
 		<link rel="stylesheet" href="{% static 'css/login.css' %}" />
-		<script>
+
+	</head>
+	<body>
+		<div id="logo">
+			<div class="logobox">
+				<img src="{% static 'img/indexImg/logo_v100.png' %}" />
+			</div>
+		</div>
+		<div id="tip">
+			<div class="tipBox">
+				依据《网络安全法》，为保障您的账户安全和正常使用，请尽快完成手机号验证！ 将更有利于保护您的个人隐私。
+			</div>
+		</div>
+			<h2>账户登陆</h2>
+			<div id="login_left">
+                <form action="/login/" method="post" id="login">
+                    {% csrf_token %}
+				<p class="p1">
+					<label><input name="check" type="radio" value="" checked="checked" />账号密码登陆 </label> 
+					<label><input name="check" type="radio" value="" / id="aa">动态密码登陆 </label>
+				</p>
+				<p class="p2"><input type="text" placeholder="请输入手机号码/邮箱" /></p>
+				<p class="p3"><input type="password" placeholder="请输入密码" /></p>
+				<p class="p4"><label><input type="checkbox" />记住我</label></p>
+				<p class="p5"> <input type="button" value="登陆"/></p>
+                </form>
+			</div>
+
+			<div id="login_right">
+				<div id="login_right_top">
+					<p>没有尚品网账号？</p>
+					<a href="/register/">注册新会员</a>
+					<img src="{% static 'img/loginImg/arrow.jpg' %}" />
+				</div>
+				<div id="login_right_buttom">
+					<img src="{% static 'img/loginImg/login_right_bottom.jpg' %}" />
+				</div>
+			</div>
+
+		<div id="login_foot">
+			<img src="{% static 'img/loginImg/login_foot.jpg' %}" />
+		</div>
+    	<script>
 			$(function(){
 				var name = $.cookie("user");
 				var pwd = $.cookie("psd");
 				$(".p2 input").val(name);
 				$(".p3 input").val(pwd);
-				
+
 
 				console.log(name);
 				console.log(pwd);
@@ -29,53 +71,15 @@
 							location.href = "/index/";
 							if($(".p4 input").prop("checked")==true){
 								$.cookie("user", userName, {expires:30, path:"/"});
-								$.cookie("psd", passWord, {expires:30, path:"/"});				
-							}	
+								$.cookie("psd", passWord, {expires:30, path:"/"});
+							}
 						}else if(status ==0){
 							alert(obj.msg);
 						}
-						
+
 					})
 				});
 			})
 		</script>
-	</head>
-	<body>
-		<div id="logo">
-			<div class="logobox">
-				<img src="{% static 'img/indexImg/logo_v100.png' %}" />
-			</div>
-		</div>
-		<div id="tip">
-			<div class="tipBox">
-				依据《网络安全法》，为保障您的账户安全和正常使用，请尽快完成手机号验证！ 将更有利于保护您的个人隐私。
-			</div>
-		</div>
-		<form id="login">
-			<h2>账户登陆</h2>
-			<div id="login_left">
-				<p class="p1">
-					<label><input name="check" type="radio" value="" checked="checked" />账号密码登陆 </label> 
-					<label><input name="check" type="radio" value="" / id="aa">动态密码登陆 </label>
-				</p>
-				<p class="p2"><input type="text" placeholder="请输入手机号码/邮箱" /></p>
-				<p class="p3"><input type="password" placeholder="请输入密码" /></p>
-				<p class="p4"><label><input type="checkbox" />记住我</label></p>
-				<p class="p5"> <input type="button" value="登陆"/></p>
-			</div>
-			<div id="login_right">
-				<div id="login_right_top">
-					<p>没有尚品网账号？</p>
-					<a href="/register/">注册新会员</a>
-					<img src="{% static 'img/loginImg/arrow.jpg' %}" />
-				</div>
-				<div id="login_right_buttom">
-					<img src="{% static 'img/loginImg/login_right_bottom.jpg' %}" />
-				</div>
-			</div>
-		</form>
-		<div id="login_foot">
-			<img src="{% static 'img/loginImg/login_foot.jpg' %}" />
-		</div>
 	</body>
 </html>

@@ -142,58 +142,58 @@ window.onload = function(){
 		}
 	}
 	
-	//注册按钮
-	// $("btn").onclick = function(){
-	// 	if(checkPhone()&&checkCheck()&&checkPhoneNum()&&checkPsd()){
-	// 		//ajax请求数据
-	// 		//创建xhr对象
-	// 		function createXHR(){
-	// 			if (window.XMLHttpRequest) {
-	// 				return new XMLHttpRequest(); //IE7+，非IE
-	// 			}
-	// 			return ActiveXObject("Microsoft.XMLHTTP"); //IE6
-	// 		}
-	// 		var name = $("phone").value;
-	// 		var psd = $("psd").value;
-	//
-	//
-	// 		var xhr = createXHR();
-	// 		xhr.open("POST","http://localhost/leshangwang/json/register.php",true);
-	// 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	// 		xhr.send("username="+name+"&password="+psd);
-	//
-	// 		xhr.onreadystatechange = function(){
-	// 			if(xhr.readyState==4&&xhr.status==200){
-	// 				var obj = JSON.parse(xhr.responseText);
-	// 				if(obj.status==1){
-	// 					window.location.href = "login.html";
-	// 					alert(obj.msg);
-	//
-	// 				}else{
-	// 					alert(obj.msg);
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// 	else{
-	// 		if(!checkPhone()){
-	// 			alert("手机号码不合法")
-	// 		}
-	// 		if(!checkCheck()){
-	// 			alert("验证码输入有误");
-	// 		}
-	// 		// if(!checkPhoneNum()){
-	// 		// 	alert("短信验证码有误") ;
-	// 		// }
-	// 		if(!checkCheck()){
-	// 			alert("密码输入不合法") ;
-	// 		}
-	//
-	// 		window.location.reload();
-	//
-	// 	}
-	//
-	// }
+	注册按钮
+	$("btn").onclick = function(){
+		if(checkPhone()&&checkCheck()&&checkPhoneNum()&&checkPsd()){
+			//ajax请求数据
+			//创建xhr对象
+			function createXHR(){
+				if (window.XMLHttpRequest) {
+					return new XMLHttpRequest(); //IE7+，非IE
+				}
+				return ActiveXObject("Microsoft.XMLHTTP"); //IE6
+			}
+			var name = $("phone").value;
+			var psd = $("psd").value;
+
+
+			var xhr = createXHR();
+			xhr.open("POST","http://localhost/leshangwang/json/register.php",true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send("username="+name+"&password="+psd);
+
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState==4&&xhr.status==200){
+					var obj = JSON.parse(xhr.responseText);
+					if(obj.status==1){
+						window.location.href = "login.html";
+						alert(obj.msg);
+
+					}else{
+						alert(obj.msg);
+					}
+				}
+			}
+		}
+		else{
+			if(!checkPhone()){
+				alert("手机号码不合法")
+			}
+			if(!checkCheck()){
+				alert("验证码输入有误");
+			}
+			// if(!checkPhoneNum()){
+			// 	alert("短信验证码有误") ;
+			// }
+			if(!checkCheck()){
+				alert("密码输入不合法") ;
+			}
+
+			window.location.reload();
+
+		}
+
+	}
 	
 	
 }

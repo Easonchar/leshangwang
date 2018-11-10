@@ -55,9 +55,9 @@ def login(request):
         password =  generate_password( request.POST.get("password") )
         print(username,password)
 
-        users = User.objects.all().filter(username=username).filter(password=password)
+        users = User.objects.filter(username=username).filter(password=password)
         if users.exists():
-            user = users[0]
+            user = users.first()
             response = redirect('leshangwang:index')
             response.set_cookie('username', user.username)
             print(username)
@@ -83,7 +83,7 @@ def register(request):
             user.tel = username
             user.save()    #
             response = redirect('leshangwang:index')
-            response.set_cookie('username', user.username)
+            response.set_cookie('username',username)
             return response
         except Exception as e:
             return HttpResponse('注册失败' + e)
