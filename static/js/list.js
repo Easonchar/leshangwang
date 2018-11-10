@@ -65,19 +65,20 @@ $(function(){
 	//加载商品列表页的数据
 	
 	//ajax请求数据  动态加载到页面的指定位置
-	$.get("../json/list.json",function(data){
-		console.log(data);
-		var arr = data;
+	$.get("/ajax/",function(data){
+		console.log(arr);
+		var arr = data.goodslist;
 		//遍历数组中的数据
 		for (var i=0;i<arr.length;i++) {
 			var obj = arr[i];
+			imgsrc = '/static/' + obj.img2
 //			var li = "<li><div><img src='../"+obj.img2+"' /></div><p>"+obj.name+"</p><p>耐克</p><span><i>￥</i>"+obj.price+"</span></li>"
 				var li= `<li>
 							<div>
-								<img src='../${obj.img2}' >
+								<img src='${imgsrc}'>
 							</div>
 							<p>${obj.name}</p>
-							<p>耐克</p>
+							<p>${obj.brand}</p>
 							<span><i>￥</i>${obj.price}</span>
 						</li>`
 
@@ -85,43 +86,33 @@ $(function(){
 			$(li).appendTo($("#shoes_list"));
 
 		}
-
+//
 		//点击尚品进入详情页
 		$("#shoes_list").on("click","li",function(){
 			var index = $(this).index();
 			var obj = arr[index];
 			//进入详情页， 且将当前点击的商品的id传入
-			location.href = "detail.html?id=" + obj.id;
+			location.href = "/detail/?id=" + obj.id;
 			console.log("aaaa")
 		});
 		//鼠标移入列表页时改变图片对应的src
 		$("#shoes_list").on("mouseenter","img",function(){
 			var index = $(this).index("#shoes_list img");
 			var obj = arr[index];
-			$(this).attr("src","../"+obj.img1);//这里src的路径是一样的
+			imgsrc1 = '/static/' + obj.img1
+			// $(this).attr("src",imgsrc1);//这里src的路径是一样的
+			$(this).attr('src',imgsrc1)
+
 		});
 		$("#shoes_list").on("mouseleave","img",function(){
 			var index = $(this).index("#shoes_list img");
 			var obj = arr[index];
-			$(this).attr("src","../"+obj.img2);
+			imgsrc = '/static/' + obj.img2
+			$(this).attr('src',imgsrc);
 		});
 
 	});
 
 
-		//点击尚品进入详情页
-		$("#shoes_list").on("click","li",function(){
-			var index = $(this).index();
-			var obj = arr[index];
-			//进入详情页， 且将当前点击的商品的id传入
-			location.href = "detail.html?id=" + obj.id;
-			console.log("aaaa")
-		});
-		//鼠标移入列表页时改变图片对应的src
-		$("#shoes_list").on("mouseenter","img",function(){
-			var index = $(this).index("#shoes_list img");
-			var obj = arr[index];
-			$(this).attr("src","../"+obj.img1);//这里src的路径是一样的
-		});
 
 })

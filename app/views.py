@@ -34,15 +34,37 @@ def generate_password(password):
     return sha.hexdigest()
 
 def detail(request):
-    return render(request,'html/detail.html')
+    good = goods.objects.all()
+    goodslist = []
+    for item in good:
+        responseData = {
+            'id': item.id,
+            'name': item.name,
+            'price': item.price,
+            'brand': item.brand,
+            'img2': item.img2,
+            'img1': item.img1,
+            'img3': item.img3,
+            'img4': item.img4,
+            'img5': item.img5,
+            'img6': item.img6,
+            'img7': item.img7,
+            'img8': item.img8,
+            'img9': item.img9,
+            'img10': item.img10,
 
+        }
+        goodslist.append(responseData)
+    return render(request,'html/detail.html',context={'goodslist':goodslist})
+    # return JsonResponse({'goodslist':goodslist})
 
 def list(request):
-    wheels = goods.objects.all()
-
-    data = {
-        'wheels':'wheels',
-    }
+    good = goods.objects.all()
+    for item in good:
+        goodid = item.id
+        data = {
+            'goodid':item.id,
+        }
 
     return render(request,'html/list.html',context=data)
 
@@ -105,40 +127,27 @@ def mine(request):
     return render(request,'html/mine.html')
 
 
-def jsonstatus(request):
+def ajax(request):
+    good = goods.objects.all()
+    goodslist = []
+    for item in good:
+        responseData = {
+            'id': item.id,
+            'name': item.name,
+            'price': item.price,
+            'brand': item.brand,
+            'img2': item.img2,
+            'img1': item.img1,
+            'img3': item.img3,
+            'img4': item.img4,
+            'img5': item.img5,
+            'img6': item.img6,
+            'img7': item.img7,
+            'img8': item.img8,
+            'img9': item.img9,
+            'img10': item.img10,
+        }
+        goodslist.append(responseData)
 
-    id = request.GET.get('id')
-    name = request.GET.get("name")
-    price = request.GET.get('price')
-    brand = request.GET.get('brand')
-    unit = request.GET.get('unit')
-    img1 = request.GET.get('img1')
-    img2 = request.GET.get('img2')
-    img3 = request.GET.get('img3')
-    img4 = request.GET.get('img4')
-    img5 = request.GET.get('img5')
-    img6 = request.GET.get('img6')
-    img7 = request.GET.get('img7')
-    img8 = request.GET.get('img8')
-    img9 = request.GET.get('img9')
-    img10 = request.GET.get('img10')
-    goods.save()
-    responseData = {
-        'id':id,
-        'name':name,
-        'price':price,
-        'brand':brand,
-        'unit':unit,
-        'img1':img1,
-        'img2': img2,
-        'img3': img3,
-        'img4': img4,
-        'img5': img5,
-        'img6': img6,
-        'img7': img7,
-        'img8': img8,
-        'img9': img9,
-        'img10': img10,
-    }
-
-    return JsonResponse(responseData)
+    print(goodslist)
+    return JsonResponse({'goodslist':goodslist})

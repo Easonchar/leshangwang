@@ -27,12 +27,11 @@ class goods(models.Model):
     img8 = models.CharField(max_length=256)
     img9 = models.CharField(max_length=256)
     img10 = models.CharField(max_length=256)
-    trackid = models.IntegerField()
-
+    trackid = models.IntegerField(default=0)
 
 class lunbo(models.Model):
     img = models.CharField(max_length=256)
-    trackid = models.IntegerField()
+    trackid = models.IntegerField(default=0)
 
 
 

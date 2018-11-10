@@ -14,6 +14,7 @@
 
 	<script>
 		$(function(){
+
 			//获取从列表页传过来的id
 			// location.search : 参数部分， 如:?id=1002&name=lisi
 			var param = location.search.substring(1);//获取&后面的参数
@@ -32,9 +33,9 @@
 				return "";
 			}
 			//获取json数据
-			$.get("{% static 'json/list.json' %}",function(data){
+			$.get("/ajax/",function(data){
 				var arr = data;
-//				console.log(arr);
+				console.log(arr);
 				//for循环遍历数组
 				for (var i=0;i<$(arr).size();i++) {
 					var obj = arr[i];
@@ -90,12 +91,17 @@
 			})
 			
 			function loadUI(obj){
-				$("#smallImg img").attr("src","../"+obj.img3);
-				$("#bigImg").attr("src","../"+obj.img3);
-				$("#detail_list li img").eq(0).attr("src","../"+obj.img7);
-				$("#detail_list li img").eq(1).attr("src","../"+obj.img8);
-				$("#detail_list li img").eq(2).attr("src","../"+obj.img9);
-				$("#detail_list li img").eq(3).attr("src","../"+obj.img10);
+                imgsrc3 = '/static/' + obj.img3
+                imgsrc7 = '/static/' + obj.img7
+                imgsrc8 = '/static/' + obj.img8
+                imgsrc9 = '/static/' + obj.img9
+                imgsrc10 = '/static/' + obj.img10
+				$("#smallImg img").attr("src",imgsrc3);
+				$("#bigImg").attr("src",imgsrc3);
+				$("#detail_list li img").eq(0).attr("src",imgsrc7);
+				$("#detail_list li img").eq(1).attr("src",imgsrc8);
+				$("#detail_list li img").eq(2).attr("src",imgsrc9);
+				$("#detail_list li img").eq(3).attr("src",imgsrc10);
 				$("#detail_list_msg h2").html(obj.name);
 				$("#detail_list_msg h3").html(obj.brand);
 				$("#detail_list_msg h4").html("￥"+obj.price);
@@ -106,22 +112,26 @@
 				
 				
 				$("#detail_list li img").click(function(){
-					var index = $(this).index();
-					$("#smallImg img").attr("src","../"+obj.img3);
-					$("#bigImg").attr("src","../"+obj.img3);
+                    imgsrc3 = '/static/' + obj.img3
+                    var index = $(this).index();
+					$("#smallImg img").attr("src",imgsrc3);
+					$("#bigImg").attr("src",imgsrc3);
 					$(this).parent().addClass("active").siblings().removeClass("active");
 				})
 				$("#detail_list li img").eq(1).click(function(){
-					$("#smallImg img").attr("src","../"+obj.img4);
-					$("#bigImg").attr("src","../"+obj.img4);
+				    imgsrc4 = '/static/' + obj.img4
+					$("#smallImg img").attr("src",imgsrc4);
+					$("#bigImg").attr("src",imgsrc4);
 				})
 				$("#detail_list li img").eq(2).click(function(){
-					$("#smallImg img").attr("src","../"+obj.img5);
-					$("#bigImg").attr("src","../"+obj.img5);
+				    imgsrc5 = '/static/' + obj.img5
+					$("#smallImg img").attr("src",imgsrc5);
+					$("#bigImg").attr("src",imgsrc5);
 				})
 				$("#detail_list li img").eq(3).click(function(){
-					$("#smallImg img").attr("src","../"+obj.img6);
-					$("#bigImg").attr("src","../"+obj.img6);
+				    imgsrc6 = '/static/' + obj.img6
+					$("#smallImg img").attr("src",imgsrc6);
+					$("#bigImg").attr("src",imgsrc6);
 				})
 				
 			}

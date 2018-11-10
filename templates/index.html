@@ -18,7 +18,7 @@
 
 				<li style="margin-left: 20px;">
                     {% if username %}
-                    <b> 用户：{{ username }} </b>欢迎来到尚品网,<a href="{% url 'leshangwang:index' %}">退出</a>&nbsp;|
+                    <b> 用户：{{ username }} </b>欢迎来到尚品网,<a href="{% url 'leshangwang:logout' %}">退出</a>&nbsp;|
                     {% else %}
                         欢迎来到尚品网,<a href="{% url 'leshangwang:login' %}">登陆</a>&nbsp;|
                     {% endif %}

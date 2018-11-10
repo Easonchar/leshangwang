@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'leshangwang.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lsw',
+        'NAME': 'qqq',
         'USER':'root',
         'PASSWORD':'666666',
         'HOST':'127.0.0.1',
