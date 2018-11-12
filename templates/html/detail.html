@@ -18,15 +18,22 @@
 			//获取从列表页传过来的id
 			// location.search : 参数部分， 如:?id=1002&name=lisi
 			var param = location.search.substring(1);//获取&后面的参数
+            //console.log(param)
 			var pid = getParams(param,"id");//获取keyde value值
+            console.log(pid)
 			
 			//查找参数对应的值
 			function getParams(str, name){
 				var arr = str.split("&");
+				//console.log(arr)
 				for (var i=0; i<arr.length; i++) {
-					var str1 = arr[i]; // id=1002 
+					var str1 = arr[i]; // id=1002
+                    //console.log(str1)
 					var arr1 = str1.split("=");
+                    //console.log(arr1)
 					if (arr1[0] == name) {
+					    //console.log(arr1[0])
+                        //console.log(arr1[1])
 						return arr1[1];
 					}
 				}
@@ -34,12 +41,15 @@
 			}
 			//获取json数据
 			$.get("/ajax/",function(data){
-				var arr = data;
+				var arr = data.goodslist;
 				console.log(arr);
 				//for循环遍历数组
 				for (var i=0;i<$(arr).size();i++) {
 					var obj = arr[i];
+					{#console.log($(arr).size())#}
+					{#console.log(obj)#}
 					if(obj.id == pid ){
+
 						loadUI(obj);
 						var a = obj;//要先用对象存起来
 						//点击加入购物车
@@ -82,7 +92,7 @@
 
 						})
 						$("#shoppingCar,#detail_list_msg input").click(function(){
-							location.href = "shoppingCar.html";
+							location.href = "/shoppingCar/";
 						})
 					}
 				}

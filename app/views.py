@@ -55,7 +55,7 @@ def detail(request):
 
         }
         goodslist.append(responseData)
-    return render(request,'html/detail.html',context={'goodslist':goodslist})
+    return render(request,'html/detail.html',context=responseData)
     # return JsonResponse({'goodslist':goodslist})
 
 def list(request):

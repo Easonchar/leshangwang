@@ -66,8 +66,9 @@ $(function(){
 	
 	//ajax请求数据  动态加载到页面的指定位置
 	$.get("/ajax/",function(data){
-		console.log(arr);
+
 		var arr = data.goodslist;
+		console.log(arr)
 		//遍历数组中的数据
 		for (var i=0;i<arr.length;i++) {
 			var obj = arr[i];
