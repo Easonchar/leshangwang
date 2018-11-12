@@ -34,10 +34,12 @@ def generate_password(password):
     return sha.hexdigest()
 
 def detail(request):
+    username = request.COOKIES.get('username')
     good = goods.objects.all()
     goodslist = []
     for item in good:
         responseData = {
+            'username': username,
             'id': item.id,
             'name': item.name,
             'price': item.price,
@@ -59,11 +61,13 @@ def detail(request):
     # return JsonResponse({'goodslist':goodslist})
 
 def list(request):
+    username = request.COOKIES.get('username')
     good = goods.objects.all()
     for item in good:
         goodid = item.id
         data = {
             'goodid':item.id,
+            'username': username,
         }
 
     return render(request,'html/list.html',context=data)

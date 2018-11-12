@@ -16,7 +16,11 @@
 		<div id="top">
 			<ul id="list1">
 				<li style="margin-left: 20px;">
-					欢迎来到尚品网,<a href="{% url 'leshangwang:login' %}">登陆</a>&nbsp;|
+					{% if username %}
+                    <b> 用户：{{ username }} </b>欢迎来到尚品网,<a href="{% url 'leshangwang:logout' %}">退出</a>&nbsp;|
+                    {% else %}
+                        欢迎来到尚品网,<a href="{% url 'leshangwang:login' %}">登陆</a>&nbsp;|
+                    {% endif %}
 				</li>
 				<li><a href="{% url 'leshangwang:register' %}">注册</a></li>
 				<li>
@@ -108,59 +112,6 @@
 		<div id="shoes">
 			<h2>高跟鞋</h2>
 			<ul id="shoes_list">
-{#				<li>#}
-{#					<div>#}
-{#						<img src="{% static 'img/listImg/list1_2.jpg' %}" />#}
-{#					</div>#}
-{#					<p>尖头细跟高跟鞋白色</p>#}
-{#					<p>耐克</p>#}
-{#					<span><i>￥</i>3000</span>#}
-{#				</li>#}
-{##}
-{#                <li>#}
-{#					<div>#}
-{#						<img src="{% static 'img/listImg/list2_2.jpg' %}" />#}
-{#					</div>#}
-{#					<p>尖头斜跟高跟鞋白色</p>#}
-{#					<p>耐克</p>#}
-{#					<span><i>￥</i>4000</span>#}
-{#				</li>#}
-{##}
-{#                <li>#}
-{#					<div>#}
-{#						<img src="{% static 'img/listImg/list3_2.jpg' %}" />#}
-{#					</div>#}
-{#					<p>白色高跟鞋3</p>#}
-{#					<p>耐克</p>#}
-{#					<span><i>￥</i>5000</span>#}
-{#				</li>#}
-{##}
-{#                <li>#}
-{#					<div>#}
-{#						<img src="{% static 'img/listImg/list4_2.jpg' %}" />#}
-{#					</div>#}
-{#					<p>白色高跟鞋4</p>#}
-{#					<p>耐克</p>#}
-{#					<span><i>￥</i>6000</span>#}
-{#				</li>#}
-{##}
-{#                <li>#}
-{#					<div>#}
-{#						<img src="{% static 'img/listImg/list5_2.jpg' %}" />#}
-{#					</div>#}
-{#					<p>白色高跟鞋5</p>#}
-{#					<p>耐克</p>#}
-{#					<span><i>￥</i>7000</span>#}
-{#				</li>#}
-{##}
-{#                <li>#}
-{#					<div>#}
-{#						<img src="{% static 'img/listImg/list6_2.jpg' %}" />#}
-{#					</div>#}
-{#					<p>白色高跟鞋6</p>#}
-{#					<p>耐克</p>#}
-{#					<span><i>￥</i>8000</span>#}
-{#				</li>#}
 
 			</ul>
 		</div>
